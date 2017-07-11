@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore_WebApi", "aspnetcore\WebApi\WebApi\AspNetCore_WebApi.csproj", "{AAA61A3C-2204-4F63-9517-EC379E4008C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet45_WebApi", "aspnet45\AspNet45_WebApi\AspNet45_WebApi.csproj", "{C4006CB6-59BC-45CD-945C-2A8225A67248}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AAA61A3C-2204-4F63-9517-EC379E4008C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAA61A3C-2204-4F63-9517-EC379E4008C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAA61A3C-2204-4F63-9517-EC379E4008C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAA61A3C-2204-4F63-9517-EC379E4008C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4006CB6-59BC-45CD-945C-2A8225A67248}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4006CB6-59BC-45CD-945C-2A8225A67248}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4006CB6-59BC-45CD-945C-2A8225A67248}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4006CB6-59BC-45CD-945C-2A8225A67248}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
