@@ -6,7 +6,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.IdentityModel.Tokens;
 using WebApi.CustomEvents;
-using System;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Http;
 
 namespace WebApi
 {
@@ -54,6 +55,29 @@ namespace WebApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler(setup =>
+                {
+                    setup.Run(async ctx =>
+                    {
+                        var exception = ctx.Features.Get<Microsoft.AspNetCore.Diagnostics.IExceptionHandlerFeature>().Error;
+                        var logger = app.ApplicationServices.GetService<ILogger<Startup>>();
+                        logger.LogError(exception.Message);
+
+                        if (ctx.Request.Path.StartsWithSegments("/api"))
+                        {
+                            ctx.Response.ContentType = "applicaton/json";
+                            var response = new
+                            {
+                                Error = exception.Message
+                            };
+                            ctx.Response.StatusCode = StatusCodes.Status500InternalServerError;
+                            await ctx.Response.WriteAsync(JsonConvert.SerializeObject(response));
+                        }
+                    });
+                });
             }
 
             var clientId = Configuration["AzureAd:ClientId"];
