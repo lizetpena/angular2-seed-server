@@ -81,6 +81,7 @@ namespace WebApi
             }
 
             var clientId = Configuration["AzureAd:ClientId"];
+            var spaClientId = Configuration["AzureAd:SpaClientId"];
             var tenantId = Configuration["AzureAd:TenantId"];            
             var issuer = $"https://sts.windows.net/{tenantId}/";
 
@@ -93,7 +94,7 @@ namespace WebApi
                     ValidateIssuer = true,
                     ValidIssuer = issuer,
                     ValidateAudience = true,                       
-                    ValidAudiences = new string[] {clientId },
+                    ValidAudiences = new string[] {clientId, spaClientId },
                     ValidateLifetime = true
                 },
                 Events = new MyJwtBearerEvents(loggerFactory.CreateLogger<MyJwtBearerEvents>())
