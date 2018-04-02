@@ -82,8 +82,9 @@ namespace WebApi
 
             var clientId = Configuration["AzureAd:ClientId"];
             var spaClientId = Configuration["AzureAd:SpaClientId"];
-            var tenantId = Configuration["AzureAd:TenantId"];            
-            var issuer = $"https://sts.windows.net/{tenantId}/";
+            var tenantId = Configuration["AzureAd:TenantId"];
+            var issuer = $"https://sts.windows.net/{tenantId}/"; 
+           
 
             app.UseJwtBearerAuthentication(new JwtBearerOptions
             {                
