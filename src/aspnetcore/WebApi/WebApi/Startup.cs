@@ -80,23 +80,19 @@ namespace WebApi
                 });
             }
 
-            var clientId = Configuration["AzureAd:ClientId"];
-            var spaClientId = Configuration["AzureAd:SpaClientId"];
-            var tenantId = Configuration["AzureAd:TenantId"];
-            var issuer = $"https://sts.windows.net/{tenantId}/"; 
+            var audience = Configuration["AzureAd:Audience"];
+            var tenantName = Configuration["AzureAd:TenantName"];
+            //var issuer = $"https://sts.windows.net/{tenantName}/"; 
            
 
             app.UseJwtBearerAuthentication(new JwtBearerOptions
             {                
-                Authority = "https://login.microsoftonline.com/common/",
+                Authority = "https://login.microsoftonline.com/"+tenantName,
                 TokenValidationParameters =                
                 new TokenValidationParameters
                 {
-                    ValidateIssuer = true,
-                    ValidIssuer = issuer,
-                    ValidateAudience = true,                       
-                    ValidAudiences = new string[] {clientId, spaClientId },
-                    ValidateLifetime = true
+                                     
+                    ValidAudience = audience 
                 },
                 Events = new MyJwtBearerEvents(loggerFactory.CreateLogger<MyJwtBearerEvents>())
             });
