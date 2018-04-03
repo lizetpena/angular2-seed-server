@@ -87,7 +87,7 @@ namespace WebApi
 
             app.UseJwtBearerAuthentication(new JwtBearerOptions
             {                
-                Authority = "https://login.microsoftonline.com/"+tenantName,
+                Authority = $"https://login.microsoftonline.com/{tenantName}",
                 TokenValidationParameters =                
                 new TokenValidationParameters
                 {
