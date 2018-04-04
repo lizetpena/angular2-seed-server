@@ -90,8 +90,7 @@ namespace WebApi
                 Authority = $"https://login.microsoftonline.com/{tenantName}",
                 TokenValidationParameters =                
                 new TokenValidationParameters
-                {
-                                     
+                {                                     
                     ValidAudience = audience 
                 },
                 Events = new MyJwtBearerEvents(loggerFactory.CreateLogger<MyJwtBearerEvents>())
